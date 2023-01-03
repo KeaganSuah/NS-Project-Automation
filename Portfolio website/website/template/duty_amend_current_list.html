@@ -1,0 +1,328 @@
+{% extends "base.html" %} {% block title %}{{ label }} Amend Rouster{% endblock %}
+
+{% block content %}
+
+<!--page styling functions-->
+<style>
+    .wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+}
+</style>
+<style type="text/css">
+/* general styling */
+body {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.25;
+  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.boxedbackground {
+  width: 90%;
+  border-radius: 10px;
+  background-image: url('https://garden.spoonflower.com/c/12359263/p/f/l/bTUNumvFmPzvHski3IXgNWlkrWaTMC0CWTvgFGjzJapZfTNOtUBjMR8/Solid%20light%20grey.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 10px;
+  margin: auto;
+   text-align: left;
+}
+.boxed {
+  border-radius: 10px;
+  background-color: white;
+  width: 90%;
+  border: 2px solid grey;
+  padding: 10px;
+  margin: auto;
+   text-align: left;
+}
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.row {
+  background: #fff;
+  min-width: 960px;
+  padding: 66px 0 44px 0;
+}
+
+</style>
+
+<body>
+<form method="POST">
+<br>
+<div class="boxedbackground">
+    <h4 align="center" style=font-size:35px><b>{{ label }} Amend Rouster</b></h4>
+</div>
+<br>
+<div class="boxed">
+    <label for="activity">Pick which amendments is being made to the Rouster </label>
+<!--input for selecting branch-->
+<Select id="activity" name="activity" class="form-control" >
+   <option>Choose your option</option>
+   <option value="swap">swap</option>
+    <option value="activate">activate</option>
+    <option value="change">change duty</option>
+    <option value="change_standby">change standby</option>
+</Select>
+</div>
+<br>
+<div class="boxedbackground">
+<div id="swap" class="swap" style="display:none">
+<div class="boxed">
+<p>This will be used when Two Personnel would like to swap their duties with each other</p>
+</div>
+<br>
+<label for="first_day">Select the earlier date of the swap </label>
+<Select id="first_day" name="first_day" class="form-control" >
+    {% for days in range(1, 32) %}
+   <option value="day{{days}}">{{days}}</option>
+    {% endfor %}
+</Select>
+<br>
+{% for day, names in dictionary.copy().items() %}
+<div id="day{{day}}" class="swap_first_day" style="display:none">
+<label for="first_name{{day}}">Select swapper Name</label>
+<Select id="first_name{{day}}" name="first_name{{day}}" class="form-control" >
+    {%for person in names['duty'] %}
+   <option value="{{person}}">{{person}}</option>
+    {%endfor%}
+</Select>
+</div>
+{%endfor%}
+<br>
+<label for="second_day">Select the later date of the swap </label>
+<Select id="second_day" name="second_day" class="form-control" >
+    {% for days in range(1, 32) %}
+   <option value="second_day{{days}}">{{days}}</option>
+    {% endfor %}
+</Select>
+{% for day, names in dictionary.copy().items() %}
+<div id="second_day{{day}}" class="swap_second_day" style="display:none">
+<br>
+<label for="second_name{{day}}">Select swapper Name </label>
+<Select id="second_name{{day}}" name="second_name{{day}}" class="form-control" >
+    {%for person in names['duty'] %}
+   <option value="{{person}}">{{person}}</option>
+    {%endfor%}
+</Select>
+</div>
+{%endfor%}
+</div>
+
+<!--for changing personnel-->
+
+<div id="change" class="change" style="display:none">
+<div class="boxed">
+<p>This is to replace the current personnel with a new personnel</p>
+</div>
+<br>
+<label for="change_first_day">Select the Replacement Date </label>
+<Select id="change_first_day" name="change_first_day" class="form-control" >
+    {% for days in range(1, 32) %}
+   <option value="change_day{{days}}">{{days}}</option>
+    {% endfor %}
+</Select>
+{% for days, names in dictionary.copy().items() %}
+<div id="change_day{{days}}" class="change_day" style="display:none">
+<br>
+<label for="change_first_name{{days}}">Select the Current Personnel </label>
+<Select id="change_first_name{{days}}" name="change_first_name{{days}}" class="form-control" >
+    {%for person in names['duty'] %}
+   <option value="{{person}}">{{person}}</option>
+    {%endfor%}
+</Select>
+</div>
+{%endfor%}
+<br>
+<label for="change_name">Select the New Personnel </label>
+<Select id="change_name" name="change_name" class="form-control" style="width:100%;">
+    {% for names in names_in_database %}
+   <option value="{{names}}">{{names}}</option>
+    {% endfor %}
+</Select>
+</div>
+
+
+<!--for activating standby-->
+
+<div id="activate" class="activate" style="display:none">
+<div class="boxed">
+<p>This is used to activate standby on a certain day</p>
+</div>
+<br>
+<label for="activate_first_day">Select the Activation Date </label>
+<Select id="activate_first_day" name="activate_first_day" class="form-control" >
+    {% for days in range(1, 32) %}
+   <option value="activate_day{{days}}">{{days}}</option>
+    {% endfor %}
+</Select>
+{% for day, names in dictionary.copy().items() %}
+<div id="activate_day{{day}}" class="activate_day" style="display:none">
+<br>
+<label for="activate_first_name{{day}}">Select the Personnel Standby is replacing </label>
+<Select id="activate_first_name{{day}}" name="activate_first_name{{day}}" class="form-control" >
+    {%for person in names['duty'] %}
+   <option value="{{person}}">{{person}}</option>
+    {%endfor%}
+</Select>
+</div>
+{%endfor%}
+</div>
+
+
+<div id="change_standby" class="change_standby" style="display:none">
+<div class="boxed">
+<p>This is to replace the current standby personnel with a new personnel</p>
+</div>
+<br>
+<label for="change_standby_first_day">Select the Replacement Date Standby </label>
+<Select id="change_standby_first_day" name="change_standby_first_day" class="form-control" >
+    {% for days in range(1, 32) %}
+   <option value="change_standby_day{{days}}">{{days}}</option>
+    {% endfor %}
+</Select>
+{% for days, names in dictionary.copy().items() %}
+<div id="change_standby_day{{days}}" class="change_standby_day" style="display:none">
+<br>
+<label for="change_standby_first_name{{days}}">Select the Current Standby Personnel </label>
+<Select id="change_standby_first_name{{days}}" name="change_standby_first_name{{days}}" class="form-control" >
+   <option value="{{names['standby']}}">{{names['standby']}}</option>
+</Select>
+</div>
+{%endfor%}
+<br>
+<label for="change_standby_name">Select the New Standby Personnel </label>
+<Select id="change_standby_name" name="change_standby_name" class="form-control" style="width:100%;">
+    {% for names in names_in_database %}
+   <option value="{{names}}">{{names}}</option>
+    {% endfor %}
+</Select>
+</div>
+    <br>
+    <form action="https://example.com">
+        <br>
+        <br>
+        <div class="wrapper">
+    <button type="submit" class="btn btn-primary" style="width:35%;" align="center">Submit</button>
+        </div>
+        <br>
+    </form>
+</div>
+<br>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#activate_first_day').change(function(){
+			$('.activate_day').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#activity').change(function(){
+			$('.activate').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+<!--javascript-->
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#change_standby_first_day').change(function(){
+			$('.change_standby_day').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#change_first_day').change(function(){
+			$('.change_day').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#activity').change(function(){
+			$('.change_standby').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#activity').change(function(){
+			$('.change').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+<!--script for showing div from choosen branch-->
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#first_day').change(function(){
+			$('.swap_first_day').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#second_day').change(function(){
+			$('.swap_second_day').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#activity').change(function(){
+			$('.swap').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+<!--search function for name-->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#change_name').select2();
+});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#change_standby_name').select2();
+});
+</script>
+
+{% endblock %}

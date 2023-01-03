@@ -1,0 +1,101 @@
+{% extends "base.html" %} {% block title %}Duty Planner Home{% endblock %}
+
+{% block content %}
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.25;
+  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  width: 125px;
+  padding: 6px 16px;
+  font-size: 15px;
+  cursor: pointer;
+}
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+.boxed {
+  border-radius: 10px;
+  background-color: white;
+  width: 90%;
+  border: 2px solid grey;
+  padding: 10px;
+  margin: auto;
+   text-align: right;
+}
+.boxedbackground {
+  width: 90%;
+  border-radius: 10px;
+  background-image: url('https://garden.spoonflower.com/c/12359263/p/f/l/bTUNumvFmPzvHski3IXgNWlkrWaTMC0CWTvgFGjzJapZfTNOtUBjMR8/Solid%20light%20grey.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 10px;
+  margin: auto;
+   text-align: right;
+}
+p {
+    margin-bottom: 5px;
+    text-align: left;
+      }
+</style>
+<form method="post">
+<br>
+<div class="boxedbackground">
+<h1 align="center" style=font-size:35px><b>Duty Planner</b></h1>
+</div>
+<br>
+<div class="boxedbackground">
+<h2 align="center" style=font-size:25px>Duty Planner Functions</h2>
+<div class="boxed">
+<p>To submit preferred or block off dates</p>
+<button class="btn" name="duty_main" value="submission"><i class="fa fa-check"></i> Submit</button>
+</div><br>
+<div class="boxed">
+<p>To Accept or Reject the Block-off dates of Duty</p>
+<button class="btn" name="duty_main" value="unavailable"><i class="fa fa-check"></i> proceed</button>
+</div><br>
+<div class="boxed">
+<p>To Generate forecast for Duty.</p><p> <b>Please note that once it is generated, amendments cannot be made.</b></p><p> Ensure that you have accepted or rejected all block-out submission before generating the forecast. </p>
+<button class="btn" name="duty_main" value="generate" onclick="clicked(event)"><i class="fa fa-cog"></i> Generate</button>
+</div><br>
+<div class="boxed">
+<p>Make Amendments to Forecast Duty Roster.</p>
+<button class="btn" name="duty_main" value="amendment_forecast"><i class="fa fa-exchange"></i> Update</button>
+</div><br>
+<div class="boxed">
+<p>Download the DO & DOO Duty Excel List</p>
+<button class="btn" name="duty_main" value="download"><i class="fa fa-download"></i> Download</button>
+</div>
+</div>
+<br>
+<div class="boxedbackground">
+<h3 align="center" style=font-size:25px>Insert/Remove Duty Personnel</h3>
+<div class="boxed">
+<p>Add new personnel into Duty Orderly Clerk or Duty Orderly Officer</p>
+<button class="btn" name="duty_main" value="add"><i class="fa fa-plus-square"></i> Add</button>
+</div><br>
+<div class="boxed">
+<p>Remove personnel into Duty Orderly Clerk or Duty Orderly Officer</p>
+<button class="btn" name="duty_main" value="remove"><i class="fa fa-minus-square"></i> Remove</button>
+</div><br>
+<div class="boxed">
+<p>Amend personnel into Duty Orderly Clerk or Duty Orderly Officer</p>
+<button class="btn" name="duty_main" value="amend"><i class="fa fa-pencil-square-o"></i> Amend</button>
+</div><br>
+</div>
+<br>
+<br>
+</form>
+{% endblock %}

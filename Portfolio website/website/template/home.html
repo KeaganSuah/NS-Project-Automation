@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block title %}Parade State Home{% endblock %}
+
+{% block content %}
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.25;
+  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  width: 125px;
+  padding: 6px 16px;
+  font-size: 15px;
+  cursor: pointer;
+}
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+.boxed {
+  border-radius: 10px;
+  background-color: white;
+  width: 90%;
+  border: 2px solid grey;
+  padding: 10px;
+  margin: auto;
+   text-align: right;
+}
+.boxedbackground {
+  width: 90%;
+  border-radius: 10px;
+  background-image: url('https://garden.spoonflower.com/c/12359263/p/f/l/bTUNumvFmPzvHski3IXgNWlkrWaTMC0CWTvgFGjzJapZfTNOtUBjMR8/Solid%20light%20grey.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 10px;
+  margin: auto;
+   text-align: right;
+}
+p {
+    margin-bottom: 5px;
+    text-align: left;
+      }
+</style>
+<form method="post">
+<br>
+<div class="boxedbackground">
+<h1 align="center" style=font-size:35px><b>Parade State Functions</b></h1>
+</div>
+<br>
+<div class="boxedbackground">
+<h2 align="center" style=font-size:25px><b>Parade State & Roll Call</b></h2>
+<div class="boxed">
+<p>Individuals submission of attendance for the following day </p>
+<button class="btn" name="submit_button" value="submission"><i class="fa fa-file-excel-o"></i> Submit</button>
+</div><br>
+<div class="boxed">
+<p>Submit Roll call and view Parade State for {{ displaying_date }}.</p>
+<p>Submitted personnel will appear in the Parade State and disappear from the Roll call.</p>
+    <p> <b>Branches with incomplete Roll Call: </b>
+<br>
+{% for incomplete_branch in branches_uncompleted %}
+{% if incomplete_branch == branches_uncompleted[-1] %}
+{{ incomplete_branch.upper() }}
+{% else %}
+{{ incomplete_branch.upper() }}
+<br>
+{% endif %}
+{% endfor %}
+</p>
+<button class="btn" name="submit_button" value="parade state"><i class="fa fa-address-book-o"></i> Roll Call</button>
+</div><br>
+<div class="boxed">
+<p>To export Parade State for {{ displaying_date }}. </p>
+<p>Please Export the Parade State into a flashguard and send it to S1 Branch</p>
+<button class="btn" name="submit_button" value="export"><i class="fa fa-file-excel-o"></i> Download</button>
+</div><br>
+</div>
+<br>
+<div class="boxedbackground">
+<h3 align="center" style=font-size:25px><b>Edit Branch Strength</b></h3>
+<div class="boxed">
+<p>To add new serviceman that have posted into the branch.</p><p>Please use their full name as state in their NRIC</p>
+<button class="btn" name="submit_button" value="add"><i class="fa fa-plus-square"></i> Add</button>
+</div><br>
+<div class="boxed">
+<p>To remove serviceman who are no longer from this branch. </p>
+<button class="btn" name="submit_button" value="remove"><i class="fa fa-minus-square"></i> Remove</button>
+</div><br>
+<div class="boxed">
+<p>To edit serviceman details, such as their name or rank.</p><p>Please use their full name as state in their NRIC</p>
+<button class="btn" name="submit_button" value="amend"><i class="fa fa-pencil-square-o"></i> Amend</button>
+</div><br>
+</div>
+<br>
+</form>
+{% endblock %}

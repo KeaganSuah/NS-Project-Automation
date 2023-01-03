@@ -1,0 +1,160 @@
+{% extends "base.html" %} {% block title %}Attendance{% endblock %}
+
+{% block content %}
+
+<!--page styling functions-->
+<style>
+    .wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+}
+</style>
+<style type="text/css">
+/* general styling */
+body {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.25;
+  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.boxedbackground {
+  width: 90%;
+  border-radius: 10px;
+  background-image: url('https://garden.spoonflower.com/c/12359263/p/f/l/bTUNumvFmPzvHski3IXgNWlkrWaTMC0CWTvgFGjzJapZfTNOtUBjMR8/Solid%20light%20grey.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 10px;
+  margin: auto;
+   text-align: left;
+}
+.boxed {
+  border-radius: 10px;
+  background-color: white;
+  width: 100%;
+  border: 2px solid grey;
+  padding: 10px;
+  margin: auto;
+   text-align: left;
+}
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.row {
+  background: #fff;
+  min-width: 960px;
+  padding: 66px 0 44px 0;
+}
+
+</style>
+
+<body>
+<form method="POST">
+<br>
+<div class="boxedbackground">
+    <h4 align="center" style=font-size:35px><b>Parade State</b></h4>
+</div>
+<br>
+<div class="boxedbackground">
+    <div class="boxed">
+    <p>You may submit your reasons for not attending roll call on {{ displaying_date }}. Please submit before 2200 Hours.</p>
+    </div>
+    <br>
+    <label for="chosen_branch">Select the branch you're from: </label>
+<!--input for selecting branch-->
+<Select id="chosen_branch" name="chosen_branch" class="form-control" required>
+   <option>Choose your option</option>
+    {% for branch in branches_string %}
+   <option value="{{ branch }}">{{ dropdown_branch.get(branch).upper() }}</option>
+    {% endfor %}
+</Select>
+
+    <!--div is used to show details belonging to branch selected-->
+{% for branch, branch_string in zip(branches_list, branches_string) %}
+<div id="{{ branch_string }}" class="selected_branch_div" style="display:none">
+    <br>
+    <label for="name{{ branch_string }}">Select your name</label>
+    <br>
+    <!--select dropdown name that belongs in the branch selected-->
+     <Select id="name{{ branch_string }}" name="name{{ branch_string }}" class="form-control" style="width:100%;" >
+     <option>* Required *</option>
+        {%for person in branch%}
+   <option value='{{ person }}'>{{ person.upper() }}</option>
+        {%endfor%}
+</Select>
+    <br>
+    <br>
+<!--input for AM Status-->
+    <label for="am_{{ branch_string }}">Select your AM Status </label>
+    <Select id="am_{{ branch_string }}" name="am_{{ branch_string }}" class="form-control">
+     <option>* Required *</option>
+        {%for state in status%}
+   <option value='{{ state }}'>{{ state }}</option>
+        {%endfor%}
+</Select>
+    <br>
+<!--input for PM Status-->
+    <label for="pm_{{ branch_string }}">Select your PM Status </label>
+    <Select id="pm_{{ branch_string }}" name="pm_{{ branch_string }}" class="form-control">
+     <option>Choose your option, if necessary</option>
+        {%for state in status%}
+   <option value='{{ state }}'>{{ state }}</option>
+        {%endfor%}
+</Select>
+</div>
+{% endfor %}
+    <br>
+    <form action="https://example.com">
+<!--input for time period-->
+  <label>
+    Enter Ending Date of your Status, if Necessary:
+    <input type="date" name="date_sub" class="form-control" style="width:100%;">
+      </label>
+        <br>
+        <br>
+        <div class="wrapper">
+    <button type="submit" class="btn btn-primary" style="width:35%;" align="center">Submit</button>
+        </div>
+        <br>
+        <h5 align="center"><b>* DO NOT Submit for others  *</b></h5>
+    </form>
+</div>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!--javascript-->
+<!--script for showing div from choosen branch-->
+<script type="text/javascript">
+	 $(document).ready(function(){
+		$('#chosen_branch').change(function(){
+			$('.selected_branch_div').hide();
+			$('#' + $(this).val()).show();
+		});
+	});
+</script>
+
+    <!--script for dropdown list for names with search function-->
+{% for branch_string in branches_string %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#name{{ branch_string }}').select2();
+});
+</script>
+{% endfor %}
+
+{% endblock %}

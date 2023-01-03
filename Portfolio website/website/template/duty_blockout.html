@@ -1,0 +1,281 @@
+{% extends "base.html" %} {% block title %}{{ label }} Block-Off dates{% endblock %}
+
+{% block content %}
+<!--page styling functions-->
+<style>
+    .wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+}
+</style>
+<style type="text/css">
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:25px;
+    height:17px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #555;
+}
+input[type='checkbox']:checked {
+    background:blue;
+}
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+</style>
+<style type="text/css">
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+    font-size: .85em;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 3000px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.6em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1.05em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* general styling */
+body {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.25;
+  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.boxedbackground {
+  width: 100%;
+  border-radius: 10px;
+  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 10px;
+  margin: auto;
+   text-align: left;
+}
+.boxed {
+  border-radius: 10px;
+  background-color: white;
+  width: 100%;
+  border: 2px solid grey;
+  padding: 10px;
+  margin: auto;
+   text-align: left;
+}
+</style>
+<style type="text/css">
+    select {
+        font-size: 0.7em;
+        width:80%;
+        height:37px;
+    }
+</style>
+
+<form method="POST">
+    <br>
+<div class="boxedbackground">
+     <h1 align="center" style=font-size:35px><b>{{ label }} Block-Off dates</b></h1>
+</div>
+    <br>
+<!--script for showing div from choosen branch-->
+<!--div is used to show details belonging to branch selected-->
+<!--roll call-->
+<div class="boxedbackground">
+<div class="boxed">
+<p><b>Instruction:</b> Please look into all the block-out dates submitted by all the {{ label }}s. </p><p> Get the evidence about their block-out and accept/reject their submission</p>
+</div>
+<br>
+<!--table showing branch roll call-->
+    <table style="width:100%" align="center" id="roll_call_{{ branch_string }}" class="rwd-table">
+  <tbody>
+  <tr style="color: black; ">
+<!--search function for table-->
+        <th colspan="4"><input type="text" id="search_{{ branch_string }}"
+                               onkeyup="myFunction('search_{{ branch_string }}', 'roll_call_{{ branch_string }}', 1)"
+                               placeholder="Search for names.." title="Type in a name">
+</th>
+        </tr>
+<!--formatted with names and attributes from display_unresponsive dictionary-->
+  {% set count = namespace(a=1) %}
+  {% for name, reasons in dictionary.items() %}
+    <tr>
+    <td data-label="No.">{{ count.a }}</td>
+    <td data-label="Name">{{name.upper()}}</td>
+    {% for reason, dates in reasons.items() %}
+    {% if len(dates) > 0 %}
+    <td data-label="{{ reason }}">{{dates}}</td>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+<!--        if absent block is ticked, it will trigger the reasons column-->
+    <td data-label="Accept" align="center"><input class="{{name }}" onchange="cbChange(this, '{{ name }}')" type="checkbox" name="{{ name }}" value="Accept"></td>
+    <td data-label="Reject" align="center"><input class="{{ name }}" onchange="cbChange(this, '{{ name }}')" type="checkbox" name="{{ name }}" value="Reject"></td>
+    </tr>
+  </tbody>
+{% set count.a = count.a + 1 %}
+{%endfor%}
+</table>
+<br>
+<div class="wrapper">
+<button type="submit" class="btn btn-primary" style="width:35%;" align="center">Submit</button>
+</div>
+</div>
+    <br>
+<div class="boxedbackground">
+<h4 align="center" style=font-size:25px>Accepted Block-Off</h4>
+    <table style="width:100%" align="center" id="accepted_doo" class="rwd-table">
+  <tbody>
+  <tr style="color: black; ">
+<!--search function for table-->
+        <th colspan="4"><input type="text" id="search_accept_doo"
+                               onkeyup="myFunction('search_accept_doo', 'accepted_doo', 1)"
+                               placeholder="Search for names.." title="Type in a name">
+</th>
+        </tr>
+  {% set count = namespace(a=1) %}
+  {% for name, reasons in accepted_blockout_display.items() %}
+    <tr>
+    <td data-label="No.">{{ count.a }}</td>
+    <td data-label="Name">{{name.upper()}}</td>
+    {% for reason, dates in reasons.items() %}
+    {% if len(dates) > 0 %}
+    <td data-label="{{ reason }}">{{dates}}</td>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+    </tr>
+  </tbody>
+{% set count.a = count.a + 1 %}
+{%endfor%}
+</table>
+</div>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--javascript-->
+<!--script for showing div from chosen branch-->
+<!--search function that is placed in table-->
+<script>
+function myFunction(input, table, no) {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById(input);
+  filter = input.value.toUpperCase();
+  table = document.getElementById(table);
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[no];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<!--if present is checked, remove absent and vis vasa-->
+<script>
+    function cbChange(obj, cbs) {
+    var cbs = document.getElementsByClassName(cbs);
+    for (var i = 0; i < cbs.length; i++) {
+        cbs[i].checked = false;
+    }
+    obj.checked = true;
+}
+</script>
+
+<!--functions that combine all javascript functions together-->
+<script>
+    function testFunction(obj, cbs, name, up_name, up_name2,var1, var2) {
+    cbChange(obj, cbs);
+    checkboxFunction(name, up_name, up_name2,var1, var2);
+}
+</script>
+
+{% endblock %}
