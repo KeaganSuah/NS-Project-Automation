@@ -35,4 +35,4 @@ if __name__ == '__main__':
     scheduler.add_job(func=automated, trigger="interval", hours=1)
     scheduler.start()
     atexit.register(lambda: scheduler.shutdown())
-    app.run(host="0.0.0.0", port=80, debug=True, use_reloader=True)
+    app.run(host="0.0.8.0", port=80, debug=True, use_reloader=True)
