@@ -100,7 +100,7 @@ html,body,h1,h2,h3,h4,h6 {font-family:Georgia, serif}
 aside {
   float: left;
   width: 30%;
-  height: 1550px;
+  height: 1600px;
   background: #ccc;
   padding: 20px;
 }
@@ -110,7 +110,7 @@ article {
   padding: 20px;
   width: 70%;
   background-image: url("https://www.solidbackgrounds.com/images/2560x1440/2560x1440-light-gray-solid-color-background.jpg");
-  height: 1550px;
+  height: 1600px;
 }
 @media (max-width: 600px) {
   aside, article {
@@ -151,18 +151,18 @@ article {
   <div class="w3-row w3-container">
     <div class="w3-row-padding" id="about">
     <div class="w3-center w3-padding-64">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16"><b>About Me</b></span>
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16"><b><i class="fa fa-user fa-fw w3-margin-right w3-text-teal"></i>About Me</b></span>
 <br>
       <br>
       <br>
       <br>
 <br>
 <div class="portfoliobackground">
-<img src="{{url_for('static', filename='face.jpg')}}" align="right" width="140" height="180"/>
+<img src="{{url_for('static', filename='face.jpg')}}" align="right" width="140" height="180" class="w3-circle"/>
 <p>I am serving my national service in the Singapore Armed Forces, helping to digitalise and innovate ideas that help ease servicemen lifes and achieve their objectives. I have an interest in Data Analytics and Web Development, and have used my interest to creates innovative solutions. In addition to exploring the area of Information Technology that I am immensely passionate about, I aspire to learn more about its related fields, such as Internet of Things and Machine Learning. I am a keen learner and seek opportunities to develop my skills further.</p>
 </div>
 <br>
-<button class="cvbtn" name="portfolio_button" value="download"><i class="fa fa-download"></i> Download CV</button>
+<button class="cvbtn" name="portfolio_button" value="resume"><i class="fa fa-download"></i> Download CV</button>
   </div>
   </div>
 </div>
@@ -181,36 +181,36 @@ article {
       <br>
 <div class="boxedbackground">
 <button id="techskills" class="btn btn-primary showFire" onclick="myFunction('techdiv')" type="button">
-    <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Technical Skills<span class="arrow up"></span>
+    <i class="fa fa-puzzle-piece fa-fw w3-margin-right w3-text-teal"></i>Technical Skills<span class="fa fa-minus fa-pull-right"></span>
 </button>
 <div id="techdiv">
 <p>Python & Flask</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
           </div>
 <p>SQL</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:65%">65%</div>
           </div>
 <p>HTML</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:70%">70%</div>
           </div>
 <p>CSS</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:70%">70%</div>
           </div>
 <p>JavaScript</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:55%">55%</div>
           </div>
 <p>Microsoft Excel</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">80%</div>
           </div>
 <p>Data Visualisations</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:70%">70%</div>
           </div>
           <br>
 </div>
@@ -218,27 +218,27 @@ article {
 <br>
 <div class="boxedbackground">
 <button id="softskills" class="btn btn-primary showFire" onclick="myFunction('softdiv')" type="button">
-    <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Soft Skills<span class="arrow down"></span>
+    <i class="fa fa-users fa-fw w3-margin-right w3-text-teal"></i>Soft Skills<span class="fa fa-plus fa-pull-right"></span>
 </button><div id="softdiv" style="display:none">
 <p>Critical Thinking</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">80%</div>
           </div>
 <p>Effective Communication</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
           </div>
 <p>Conflict resolution</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:65%">65%</div>
           </div>
 <p>Persuasion & influencing</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:70%">70%</div>
           </div>
 <p>Professionalism</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
           </div>
           <br>
       </div>
@@ -253,31 +253,13 @@ article {
 <div class="w3-row-padding" id="journey">
   <div class="w3-row w3-container">
     <div class="w3-center w3-padding-64">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16"><b><i class="fa fa-suitcase fa-fw w3-margin-right w3-text-teal"></i>Journey</b></span>
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16"><b>Journey</b></span>
 </div>
 
-<div class="boxedbackground">
-<button id="workexp" class="btn btn-primary showFire" onclick="qualitiesFunction('workdiv', 'studydiv', 'certdiv')" type="button">
-    <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Work Experience<span class="arrow down"></span>
-</button><div id="workdiv">
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Frontend & Backend Developer / Singapore Armed Forces</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2022 - Current</h6>
-<p>Digitalized the battalion by providing two automated systems through a website that eliminates human error. Created and administrated the overall program and server of the automated systems. Earning the title of Innovation Advocate and receiving Commanding Officers Testimonial.</p>
-        <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Intern Auditor / V.P.KUMARAN & CO</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2020 - Jan 2021</h6>
-<p>Prepared, analyzed and verified annual reports and financial statements to assess financial condition and facilitate financial planning. Compiled general ledger entries on short schedule that meets objectives of audit engagements. Used Excel to create and manage balance sheets and other related financial statements.</p>
-          <hr>
-        </div>
-      </div>
-  </div>
-<br>
+
 <div class="boxedbackground">
 <button id="studyexp" class="btn btn-primary showFire" onclick="qualitiesFunction('studydiv', 'workdiv', 'certdiv')" type="button">
-    <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Education<span class="arrow down"></span>
+    <i class="fa fa-graduation-cap fa-fw w3-margin-right w3-text-teal"></i>Education
 </button><div id="studydiv" style="display:none">
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Diploma in Accounting & Finance / TEMASEK POLYTHECNIC</b></h5>
@@ -297,8 +279,27 @@ Analytics, Auditing, and Information System & Financial Analytics. </p>
   </div>
 <br>
 <div class="boxedbackground">
+<button id="workexp" class="btn btn-primary showFire" onclick="qualitiesFunction('workdiv', 'studydiv', 'certdiv')" type="button">
+    <i class="fa fa-suitcase fa-fw w3-margin-right w3-text-teal"></i>Work Experience
+</button><div id="workdiv">
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Frontend & Backend Developer / Singapore Armed Forces</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2022 - Current</h6>
+<p>Digitalized the battalion by providing two automated systems through a website that eliminates human error. Created and administrated the overall program and server of the automated systems. Earning the title of Innovation Advocate and receiving Commanding Officers Testimonial.</p>
+        <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Intern Auditor / V.P.KUMARAN & CO</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2020 - Jan 2021</h6>
+<p>Prepared, analyzed and verified annual reports and financial statements to assess financial condition and facilitate financial planning. Compiled general ledger entries on short schedule that meets objectives of audit engagements. Used Excel to create and manage balance sheets and other related financial statements.</p>
+          <hr>
+        </div>
+      </div>
+  </div>
+<br>
+<div class="boxedbackground">
 <button id="certexp" class="btn btn-primary showFire" onclick="qualitiesFunction('certdiv', 'workdiv', 'studydiv')" type="button">
-    <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Certificates & Achievements<span class="arrow down"></span>
+    <i class="fa fa-trophy fa-fw w3-margin-right w3-text-teal"></i>Certificates & Achievements
 </button><div id="certdiv" style="display:none">
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Assistant Class Representative / TEMASEK POLYTHECNIC</b></h5>
@@ -326,18 +327,18 @@ Analytics, Auditing, and Information System & Financial Analytics. </p>
     <div class="w3-half w3-margin-bottom">
       <div class="portfoliobackground">
           <h3 class="w3-opacity">Digital Attendance Taking</h3>
-          <img src="{{url_for('static', filename='9amb.png')}}" align="middle" width="100%" height="200"/>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-          <button class="cvbtn" name="portfolio_button" value="attendance">Contact</button>
+          <img src="{{url_for('static', filename='attendance.jpg')}}" align="middle" width="100%" height="200"/>
+          <p>Digitalise the army battalion personnel attendance capturing, verification and compilation process, which improves efficiency and reduce errors.</p>
+          <button class="cvbtn" name="portfolio_button" value="attendance">View Demo</button>
       </div>
     </div>
 
     <div class="w3-half w3-margin-bottom">
       <div class="portfoliobackground">
           <h3 class="w3-opacity">Automated Duty Roster</h3>
-          <img src="{{url_for('static', filename='9amb.png')}}" align="middle" width="100%" height="200"/>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-          <button class="cvbtn" name="portfolio_button" value="roster">Contact</button>
+          <img src="{{url_for('static', filename='roster.png')}}" align="middle" width="100%" height="200"/>
+          <p>Digitalise and automate the duty roster planning process. Reduce manual duty planning process by 90% and eliminate human error.</p>
+          <button class="cvbtn" name="portfolio_button" value="roster">View Demo</button>
         </div>
     </div>
     <br>
@@ -427,7 +428,7 @@ function qualitiesFunction(main, var1, var2) {
   $('#techskills').on('click', function() {
     var $el = $(this),
       textNode = this.lastChild;
-    $el.find('span').toggleClass('arrow down arrow up');
+    $el.find('span').toggleClass('fa fa-minus fa fa-plus');
   });
 });
 </script>
@@ -437,37 +438,7 @@ function qualitiesFunction(main, var1, var2) {
   $('#softskills').on('click', function() {
     var $el = $(this),
       textNode = this.lastChild;
-    $el.find('span').toggleClass('arrow down arrow up');
-  });
-});
-</script>
-
-<script>
-    jQuery(function($) {
-  $('#workexp').on('click', function() {
-    var $el = $(this),
-      textNode = this.lastChild;
-    $el.find('span').toggleClass('arrow down arrow up');
-  });
-});
-</script>
-
-<script>
-    jQuery(function($) {
-  $('#studyexp').on('click', function() {
-    var $el = $(this),
-      textNode = this.lastChild;
-    $el.find('span').toggleClass('arrow down arrow up');
-  });
-});
-</script>
-
-<script>
-    jQuery(function($) {
-  $('#certexp').on('click', function() {
-    var $el = $(this),
-      textNode = this.lastChild;
-    $el.find('span').toggleClass('arrow down arrow up');
+    $el.find('span').toggleClass('fa fa-minus fa fa-plus');
   });
 });
 </script>

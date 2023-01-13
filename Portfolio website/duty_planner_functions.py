@@ -6,7 +6,7 @@ from tinydb import TinyDB, Query
 User = Query()
 DO_db = TinyDB('website/DO_db.json')
 
-wb = openpyxl.load_workbook("website/DO & DOO Duty list.xlsx")
+wb = openpyxl.load_workbook("website/Duty Roster.xlsx")
 DO_FORECAST = wb['DO FORECAST']
 DO_POINTS = wb['DO POINTS']
 
@@ -186,7 +186,7 @@ def duty_plan_generator(cool_days, cool_days_s, database, sheet_forecast, sheet_
     excuse_duty.clear()
     clearing_dictionary.clear()
     extract_database(database)
-    database.purge()
+    database.truncate()
     duty_points_excel(database, sheet_points)
     block_out_month(block_out_list)
     duty_rouster_generator(10)
@@ -629,7 +629,7 @@ def exchange_personnel_standby(date, old_name, new_name, database, sheet_current
 
 
 def save_file():
-    wb.save("website/DO & DOO Duty list.xlsx")
+    wb.save("website/Duty Roster.xlsx")
 
 
 def clear_excel_range(sheet, row1, row2, col1, col2):
@@ -774,15 +774,3 @@ def generate_blockout_display(database, dictionary):
                     dictionary[personnel.get('name')][reason] = string
                 else:
                     continue
-
-
-def insert_new_thing_database(database):
-    extract_database(database)
-    database.truncate()
-    for name, details in namelist.copy().items():
-        database.insert(
-            {'name': str(name).upper(), 'month': details['month'], 'points': details['points'],
-             'cooldown': details['cooldown'], 'cooldown_s': details['cooldown_s'],
-             'excuse': details['excuse'], 'depot': details['depot'],
-             'unavailable': details['unavailable'], 'available': []})
-    print(namelist)

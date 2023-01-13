@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}{{ label }} Block-Off dates{% endblock %}
+{% extends "base.html" %} {% block title %}Accept or Reject{% endblock %}
 
 {% block content %}
 <!--page styling functions-->
@@ -10,6 +10,16 @@
 .button {
     position: absolute;
     top: 50%;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 40px;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
 }
 </style>
 <style type="text/css">
@@ -128,7 +138,7 @@ body {
 .boxedbackground {
   width: 100%;
   border-radius: 10px;
-  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-color: rgb(200,200,200);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -157,7 +167,7 @@ body {
 <form method="POST">
     <br>
 <div class="boxedbackground">
-     <h1 align="center" style=font-size:35px><b>{{ label }} Block-Off dates</b></h1>
+     <h1 align="center" style=font-size:35px><b>Accept or Reject Duty</b></h1>
 </div>
     <br>
 <!--script for showing div from choosen branch-->
@@ -232,6 +242,10 @@ body {
 {%endfor%}
 </table>
 </div>
+<br>
+<a href="/duty_home" class="previous">&laquo; Back</a>
+<br>
+<br>
 </form>
 
 

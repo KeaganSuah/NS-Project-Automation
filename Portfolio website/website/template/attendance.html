@@ -12,6 +12,16 @@
     position: absolute;
     top: 50%;
 }
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 40px;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
 </style>
 <style type="text/css">
 /* general styling */
@@ -26,7 +36,7 @@ body {
 .boxedbackground {
   width: 90%;
   border-radius: 10px;
-  background-image: url('https://garden.spoonflower.com/c/12359263/p/f/l/bTUNumvFmPzvHski3IXgNWlkrWaTMC0CWTvgFGjzJapZfTNOtUBjMR8/Solid%20light%20grey.jpg');
+  background-color: rgb(200,200,200);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -119,10 +129,8 @@ body {
     <br>
     <form action="https://example.com">
 <!--input for time period-->
-  <label>
-    Enter Ending Date of your Status, if Necessary:
-    <input type="date" name="date_sub" class="form-control" style="width:100%;">
-      </label>
+    <label>Duration: </label>
+    <p><b>From :</b>  {{ displaying_date }}<b> To:</b> <input type="date" name="date_sub" style="width:30%;"></p>
         <br>
         <br>
         <div class="wrapper">
@@ -130,10 +138,10 @@ body {
         </div>
         <br>
         <h5 align="center"><b>* DO NOT Submit for others  *</b></h5>
+<a href="/" class="previous">&laquo; Back</a>
     </form>
 </div>
 </form>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 

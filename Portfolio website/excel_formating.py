@@ -1,7 +1,7 @@
 import openpyxl
 from openpyxl.styles import Alignment, Border, Side, PatternFill
 import datetime
-from parade_state_function import name_in_branch_generator, sort, ranking, amended_particulars_generator, branches_list
+from parade_state_function import name_in_branch_generator, sort, ranking, amended_particulars_generator, branches_string
 from copy import copy
 
 # status used for excel
@@ -190,38 +190,21 @@ def block_weekend_excel(sheet):
 
 
 # function that manage and track removed personnel
-def tracking_delete():
-    dt = datetime.datetime.today()
-    SG_time = dt + datetime.timedelta(hours=17)
-    day = SG_time.day
-    name_in_branch_generator('name')
+def tracking_delete(name, depot):
     count = 0
-    for branch in branches_list:
-        for number in range(2, (value_counter(type_xl_ps[count]))+1):
-            name_in_file = type_xl_ps[count].cell(row=number * 2, column=3).value
-            name_in_file = str(name_in_file).lower()
-            if name_in_file in branch:
-                continue
-            else:
-                if day == 1:
+    for string in branches_string:
+        if str(depot).lower() == str(string).lower():
+            for number in range(2, (value_counter(type_xl_ps[count])) + 1):
+                name_in_file = type_xl_ps[count].cell(row=number * 2, column=3).value
+                if str(name_in_file).lower() == str(name).lower():
                     for column in range(1, 4):
                         type_xl_ps[count].unmerge_cells(start_row=(value_counter(type_xl_ps[count]) * 2),
                                                         start_column=column,
                                                         end_row=((value_counter(type_xl_ps[count]) * 2) + 1),
                                                         end_column=column)
                     type_xl_ps[count].delete_rows(idx=number * 2, amount=2)
-                else:
-                    for removal_day in range(day, 33):
-                        type_xl_ps[count].cell(row=(number * 2), column=(removal_day + 3)).value = None
-                        type_xl_ps[count].cell(row=(number * 2) + 1, column=(removal_day + 3)).value = None
-                        type_xl_ps[count].cell(row=(number * 2), column=(removal_day + 3)).fill = PatternFill(
-                            start_color='00000000',
-                            end_color='00000000',
-                            fill_type='solid')
-                        type_xl_ps[count].cell(row=(number * 2) + 1, column=(removal_day + 3)).fill = PatternFill(
-                            start_color='00000000',
-                            end_color='00000000',
-                            fill_type='solid')
+        else:
+            continue
         count += 1
 
 

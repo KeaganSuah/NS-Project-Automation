@@ -11,6 +11,16 @@
     position: absolute;
     top: 50%;
 }
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 40px;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
 </style>
 <style type="text/css">
 /* general styling */
@@ -25,7 +35,7 @@ body {
 .boxedbackground {
   width: 90%;
   border-radius: 10px;
-  background-image: url('https://garden.spoonflower.com/c/12359263/p/f/l/bTUNumvFmPzvHski3IXgNWlkrWaTMC0CWTvgFGjzJapZfTNOtUBjMR8/Solid%20light%20grey.jpg');
+  background-color: rgb(200,200,200);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -56,11 +66,9 @@ body {
 <!--input for type of branch-->
     <br><label for="branch">Enter Branch</label><Select id="branch" name="branch" class="form-control" required>
      <option>Choose your option</option>
-        <option value="92FMD">92FMD</option>
-        <option value="93FMD">93FMD</option>
-        <option value="BN HQ">BN HQ</option>
-        <option value="VPS">VPS</option>
-        <option value="92/93/VPS HQ">92/93/VPS HQ</option>
+   {% for branch_string in branches_string %}
+   <option value="{{ branch_string }}">{{ dropdown_branch.get(branch_string).upper() }}</option>
+    {% endfor %}
 </Select>
     <br><label for="excuse">Enter type of Duty</label><Select id="excuse" name="excuse" class="form-control" required>
      <option>Choose your option</option>
@@ -72,6 +80,7 @@ body {
     <button type="submit" class="btn btn-primary" style="width:35%;" align="center">Add</button>
     </div>
         <br>
+    <a href="/duty_home" class="previous">&laquo; Back</a>
     </div>
 <br>
 </form>

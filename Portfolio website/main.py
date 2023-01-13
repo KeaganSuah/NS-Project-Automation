@@ -2,7 +2,7 @@ from website import create_app
 import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
 from parade_state_function import attendance_records, recorded_absences, period_submission_generator, branches_string
-from excel_formating import excel_monthly_reset, type_xl_ps, save_file, tracking_delete, block_weekend_excel
+from excel_formating import excel_monthly_reset, type_xl_ps, save_file, block_weekend_excel
 import datetime
 
 
@@ -18,7 +18,6 @@ def automated():
         attendance_records.clear()
         recorded_absences.clear()
         period_submission_generator()
-        tracking_delete()
         # function in Excel that runs daily
         for worksheet, branch_string in zip(type_xl_ps, branches_string):
             excel_monthly_reset(worksheet)

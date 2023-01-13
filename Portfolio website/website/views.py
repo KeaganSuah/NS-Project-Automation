@@ -8,7 +8,7 @@ from excel_formating import save_file, transfer_attendance_excel, transfer_summa
     type_xl_ps, type_xl_summary, amended_particulars_excel,\
     clear_excel_range, tracking_delete
 from duty_planner_functions import DO_db, DO_FORECAST, duty_insert,\
-    excel_to_dictionary, generate_names_list, requested_blockout_do, accepted_blockout, requested_blockout_doo, \
+    excel_to_dictionary, generate_names_list, requested_blockout_do, accepted_blockout, \
     swap_duty, standby_activate, exchange_personnel, exchange_personnel_standby, unavailability_reasons, \
     sign_extra_do, duty_amend_name_depot, generate_blockout_display,\
     empty_do, duty_plan_generator, DO_POINTS, duty_delete_name, submitted_available
@@ -62,6 +62,8 @@ def removing_data():
                 if search(delete_name) is True:
                     # remove personnel from database and Excel sheet
                     delete_by_name(delete_name)
+                    tracking_delete(str(delete_name).lower(), str(chosen_branch))
+                    save_file()
                     flash("Personnel has been remove from the database.", category='success')
                     return redirect(url_for('views.removing_data'))
                 else:
@@ -115,7 +117,6 @@ def index():
         elif selected_request == 'export':
             submit()
             value = 0
-            tracking_delete()
             for sum_xl in type_xl_summary:
                 clear_excel_range(sum_xl, 6, 22, 3, 20)
                 clear_excel_range(sum_xl, 3, 22, 3, 4)
@@ -315,34 +316,23 @@ def duty_submission_available():
     return render_template("duty_submission_available.html", user=current_user, name_list_do=name_list_do)
 
 
-@views.route('/duty_viewing_block_out', methods=["GET", "POST"])
-def duty_viewing():
-    accepted_blockout_display_do = dict()
-    generate_blockout_display(DO_db, accepted_blockout_display_do)
-    if request.method == 'POST':
-        page_access = str(request.form['duty_submission'])
-        if page_access == 'unavailable':
-            return redirect(url_for('views.duty_submission'))
-        elif page_access == 'available':
-            return redirect(url_for('views.duty_submission_available'))
-    return render_template("duty_blockout_viewing.html", user=current_user, requested_blockout_do=requested_blockout_do, requested_blockout_doo=requested_blockout_doo, accepted_blockout_display_do=accepted_blockout_display_do, len=len)
-
-
 @views.route('/duty_home', methods=["GET", "POST"])
 def duty_home():
     if request.method == 'POST':
         choosing_do_doo = str(request.form['duty_main'])
         if choosing_do_doo == 'unavailable':
-            return redirect(url_for('views.duty_blockout_do'))
+            return redirect(url_for('views.duty_submission'))
+        elif choosing_do_doo == 'available':
+            return redirect(url_for('views.duty_submission_available'))
         elif choosing_do_doo == 'submission':
-            return redirect(url_for('views.duty_viewing'))
+            return redirect(url_for('views.duty_blockout_do'))
         elif choosing_do_doo == 'generate':
             duty_plan_generator(15, 7, DO_db, DO_FORECAST, DO_POINTS, sign_extra_do, "DO", empty_do,
                                 requested_blockout_do)
             flash("Forecast have been generated, you may download it in the page", category='success')
             return redirect(url_for('views.duty_home'))
         elif choosing_do_doo == 'download':
-            return redirect(url_for('views.download_file_duty_do'))
+            return redirect(url_for('views.download_file_duty'))
         elif choosing_do_doo == 'amendment_forecast':
             return redirect(url_for('views.duty_plan_do_forecast'))
         elif choosing_do_doo == 'remove':
@@ -459,7 +449,8 @@ def duty_amend():
             duty_amend_name_depot(rank, amend_name_do, name, branch, DO_db)
             flash("Personnel details have been amended.", category='success')
             return redirect(url_for('views.duty_amend'))
-    return render_template("duty_amend.html", user=current_user, name_list_do=name_list_do, ranking=ranking)
+    return render_template("duty_amend.html", user=current_user, name_list_do=name_list_do, ranking=ranking, branches_string=branches_string,
+                           dropdown_branch=dropdown_branch)
 
 
 @views.route('/duty_add', methods=["GET", "POST"])
@@ -481,12 +472,13 @@ def duty_add():
         else:
             duty_insert(rank+' '+name, 1, 0, 0, 0, excuse, branch, DO_db)
             flash("Personnel has been added into the database.", category='success')
-    return render_template("duty_add.html", user=current_user, ranking=ranking)
+    return render_template("duty_add.html", user=current_user, ranking=ranking,  branches_string=branches_string,
+                           dropdown_branch=dropdown_branch)
 
 
 @views.route('/download/duty', methods=["GET", "POST"])
 def download_file_duty():
-    p = "DO & DOO Duty list.xlsx"
+    p = "Duty Roster.xlsx"
     return send_file(p, as_attachment=True)
 
 
@@ -498,4 +490,12 @@ def portfolio():
             return redirect(url_for('views.index'))
         elif procedure == 'roster':
             return redirect(url_for('views.duty_home'))
+        elif procedure == 'resume':
+            return redirect(url_for('views.download_file_resume'))
     return render_template("portfolio.html", user=current_user)
+
+
+@views.route('/download/resume', methods=["GET", "POST"])
+def download_file_resume():
+    p = "Keagan's Resume.pdf"
+    return send_file(p, as_attachment=True)

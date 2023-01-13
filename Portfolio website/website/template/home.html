@@ -37,7 +37,7 @@ body {
 .boxedbackground {
   width: 90%;
   border-radius: 10px;
-  background-image: url('https://garden.spoonflower.com/c/12359263/p/f/l/bTUNumvFmPzvHski3IXgNWlkrWaTMC0CWTvgFGjzJapZfTNOtUBjMR8/Solid%20light%20grey.jpg');
+  background-color: rgb(200,200,200);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -53,18 +53,17 @@ p {
 <form method="post">
 <br>
 <div class="boxedbackground">
-<h1 align="center" style=font-size:35px><b>Parade State Functions</b></h1>
+<h1 align="center" style=font-size:35px><b>Digital Attendance Taking</b></h1>
 </div>
 <br>
 <div class="boxedbackground">
-<h2 align="center" style=font-size:25px><b>Parade State & Roll Call</b></h2>
+<h2 align="center" style=font-size:25px><b>Main Operation</b></h2>
 <div class="boxed">
-<p>Individuals submission of attendance for the following day </p>
-<button class="btn" name="submit_button" value="submission"><i class="fa fa-file-excel-o"></i> Submit</button>
+<p><b>Step 1: </b>Individuals submission of attendance for the following day </p>
+<button class="btn" name="submit_button" value="submission"><i class="fa fa-user"></i> Submit</button>
 </div><br>
 <div class="boxed">
-<p>Submit Roll call and view Parade State for {{ displaying_date }}.</p>
-<p>Submitted personnel will appear in the Parade State and disappear from the Roll call.</p>
+<p><b>Step 2: </b>Roll Call In charge use this to submit their branch Roll call and view Parade State for {{ displaying_date }}.</p>
     <p> <b>Branches with incomplete Roll Call: </b>
 <br>
 {% for incomplete_branch in branches_uncompleted %}
@@ -79,14 +78,13 @@ p {
 <button class="btn" name="submit_button" value="parade state"><i class="fa fa-address-book-o"></i> Roll Call</button>
 </div><br>
 <div class="boxed">
-<p>To export Parade State for {{ displaying_date }}. </p>
-<p>Please Export the Parade State into a flashguard and send it to S1 Branch</p>
+<p><b>Step 3: </b>Battalion HQ export Parade State for {{ displaying_date }}. </p>
 <button class="btn" name="submit_button" value="export"><i class="fa fa-file-excel-o"></i> Download</button>
 </div><br>
 </div>
 <br>
 <div class="boxedbackground">
-<h3 align="center" style=font-size:25px><b>Edit Branch Strength</b></h3>
+<h3 align="center" style=font-size:25px><b>Add or Remove Individuals</b></h3>
 <div class="boxed">
 <p>To add new serviceman that have posted into the branch.</p><p>Please use their full name as state in their NRIC</p>
 <button class="btn" name="submit_button" value="add"><i class="fa fa-plus-square"></i> Add</button>
