@@ -16,10 +16,16 @@ body {
 }
 p {
     margin-bottom: 5px;
-    text-align: left;
+    text-align: justify;
     font-family: Times, Times New Roman, serif;
     font-size: 1.2em;
       }
+.intro{
+   margin-bottom: 5px;
+    text-align: left;
+    font-family: Times, Times New Roman, serif;
+    font-size: 1.2em;
+        }
 .center {
   display: block;
   margin-left: auto;
@@ -52,6 +58,16 @@ html,body,h1,h2,h3,h4,h6 {font-family:Georgia, serif}
   padding: 10px;
   margin: auto;
    text-align: center;
+}
+.aboutbackground {
+  width: 70%;
+  background-color: #f1f1f1;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: auto;
+   text-align: center;
+   float: center;
 }
 .btn {
   background-image: url('https://wallpaperaccess.com/full/1746862.png');
@@ -118,6 +134,10 @@ article {
     height: auto;
   }
 }
+img {
+  border: 2px solid #555;
+  border-radius: 10px;
+}
 </style>
 </head>
 <body>
@@ -157,13 +177,14 @@ article {
       <br>
       <br>
 <br>
-<div class="portfoliobackground">
-<img src="{{url_for('static', filename='face.jpg')}}" align="right" width="140" height="180" class="w3-circle"/>
-<p>I am serving my national service in the Singapore Armed Forces, helping to digitalise and innovate ideas that help ease servicemen lifes and achieve their objectives. I have an interest in Data Analytics and Web Development, and have used my interest to creates innovative solutions. In addition to exploring the area of Information Technology that I am immensely passionate about, I aspire to learn more about its related fields, such as Internet of Things and Machine Learning. I am a keen learner and seek opportunities to develop my skills further.</p>
-</div>
+<div class="aboutbackground">
+<img src="{{url_for('static', filename='face.jpg')}}" align="right" width="180" height="220"/>
+<span class="intro">I am serving my national service in the Singapore Armed Forces, helping to digitalise and innovate ideas that help ease servicemen lifes and achieve their objectives. I have an interest in Data Analytics and Web Development, and have used my interest to creates innovative solutions. In addition to exploring the area of Information Technology that I am immensely passionate about, I aspire to learn more about its related fields, such as Internet of Things and Machine Learning. I am a keen learner and seek opportunities to develop my skills further.</span>
+<br>
 <br>
 <button class="cvbtn" name="portfolio_button" value="resume"><i class="fa fa-download"></i> Download CV</button>
   </div>
+</div>
   </div>
 </div>
 </div>
@@ -328,7 +349,7 @@ Analytics, Auditing, and Information System & Financial Analytics. </p>
       <div class="portfoliobackground">
           <h3 class="w3-opacity">Digital Attendance Taking</h3>
           <img src="{{url_for('static', filename='attendance.jpg')}}" align="middle" width="100%" height="200"/>
-          <p>Digitalise the army battalion personnel attendance capturing, verification and compilation process, which improves efficiency and reduce errors.</p>
+          <p>Digitalise the Army Battalion Process of roll call and attendance taking.</p>
           <button class="cvbtn" name="portfolio_button" value="attendance">View Demo</button>
       </div>
     </div>
@@ -337,7 +358,7 @@ Analytics, Auditing, and Information System & Financial Analytics. </p>
       <div class="portfoliobackground">
           <h3 class="w3-opacity">Automated Duty Roster</h3>
           <img src="{{url_for('static', filename='roster.png')}}" align="middle" width="100%" height="200"/>
-          <p>Digitalise and automate the duty roster planning process. Reduce manual duty planning process by 90% and eliminate human error.</p>
+          <p>Digitalise and automate the duty roster planning process and management.</p>
           <button class="cvbtn" name="portfolio_button" value="roster">View Demo</button>
         </div>
     </div>

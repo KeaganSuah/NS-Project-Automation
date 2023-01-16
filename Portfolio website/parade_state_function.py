@@ -19,7 +19,7 @@ display_attendance_sort = dict()
 display_unresponsive_sort = dict()
 display_unresponsive = dict()
 # stores personnel rank for all branches per status
-status_branch = {'Present': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Late': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'HLS': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'DUTY': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Work From Home': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Outside Stationed': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Attached Out': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'On Course': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Day Off': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Local Leave': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Overseas Leave': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Medical Leave': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Medical / Dental appointment': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Report Sick Inside': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Report Sick Outside': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Hospitalised / Sickbay': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'AWOL': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'OTHERS': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}}
+status_branch = {'Present': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Work From Home': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Outside Stationed': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Attached Out': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'On Course': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Day Off': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Local Leave': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Overseas Leave': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Medical Leave': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Medical / Dental appointment': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Report Sick Inside': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Report Sick Outside': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'Hospitalised / Sickbay': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'AWOL': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}, 'OTHERS': {'s1': [], 's2': [], 's3': [], 's4': [], 's5': []}}
 
 
 # list of different branches for generating Summary for Excel
@@ -54,7 +54,7 @@ branches_string = ['s1', 's2', 's3', 's4', 's5']
 dropdown_branch = {'s1': 's1 branch', 's2': 's2 branch', 's3': 's3 branch', 's4': 's4 branch', 's5': 's5 branch'}
 
 # types of status and ranking
-status = ["Present", "Late", "HLS", "DUTY", "Work From Home", "Outside Stationed", "Attached Out",
+status = ["Present", "Work From Home", "Outside Stationed", "Attached Out",
           "On Course", "Day Off", "Local Leave",
           "Overseas Leave", "Medical Leave", "Medical / Dental appointment",
           "Report Sick Inside", "Report Sick Outside",

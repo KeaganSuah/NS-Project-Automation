@@ -5,7 +5,7 @@ from parade_state_function import submit, insert, delete_by_name, search, displa
     recorded_absences, new_time_submission, remove_submission, \
     ranking, branches_string, dropdown_branch, generate_branch_not_submitted, branches_uncompleted
 from excel_formating import save_file, transfer_attendance_excel, transfer_summary_excel, insert_new_personnel, \
-    type_xl_ps, type_xl_summary, amended_particulars_excel,\
+    type_xl_ps, type_xl_summary,\
     clear_excel_range, tracking_delete
 from duty_planner_functions import DO_db, DO_FORECAST, duty_insert,\
     excel_to_dictionary, generate_names_list, requested_blockout_do, accepted_blockout, \
@@ -69,32 +69,6 @@ def removing_data():
                 else:
                     flash("Personnel does not exist in the database.", category='error')
     return render_template("remove_database.html", user=current_user, branches_string=branches_string,
-                           zip=zip, branches_list=branches_list,
-                           dropdown_branch=dropdown_branch)
-
-
-@views.route('/database/amend', methods=["GET", "POST"])
-def amending_data():
-    # current login user only can amend personnel to the branch that is authorized for them
-    name_in_branch_generator('name')
-    if request.method == 'POST':
-        # input for the branch selected
-        chosen_branch = str(request.form['amending_branch'])
-        for branch_string, branch_sheet in zip(branches_string, type_xl_ps):
-            if chosen_branch == branch_string:
-                # input for old name, new rank and new name
-                rank = str(request.form['rank']).lower()
-                name = str(request.form['name' + branch_string]).lower()
-                amended_name = str(request.form['name']).lower()
-                # if rank and old name is not filled, output an error
-                if rank == 'choose your option' or name == 'choose your option':
-                    flash("Please fill in all the necessary details.", category='error')
-                else:
-                    amended_particulars_excel(branch_sheet, name, rank, amended_name)
-                    save_file()
-                    flash("Personnel particulars has been updated.", category='success')
-                    return redirect(url_for('views.amending_data'))
-    return render_template("amend_database.html", user=current_user, ranking=ranking, branches_string=branches_string,
                            zip=zip, branches_list=branches_list,
                            dropdown_branch=dropdown_branch)
 
@@ -166,7 +140,7 @@ def attendance():
                     name = str(request.form['name' + branch_string])
                     am = str(request.form['am_' + branch_string])
                     pm = str(request.form['pm_' + branch_string])
-                    if name == '* Required *' or am == '* Required *':
+                    if name == '* Required *' or am == '* Required *' or pm == '* Required *':
                         flash("Please fill in the required fields", category='error')
                     else:
                         if date != '' and int(date.replace('-', '')) < int(current_date):
@@ -174,7 +148,8 @@ def attendance():
                         else:
                             # submit the inputs into the dictionary, recorded absences or recorded absences for long period
                             multiple_branch_reasons(date, name, am, pm)
-                            return render_template('thank_you.html', user=current_user)
+                            flash('Thank you '+str(name).upper()+' for submitting your status.', category='success')
+                            return redirect(url_for('views.index'))
     return render_template('attendance.html', user=current_user, status=status, branches_list=branches_list,
                            branches_string=branches_string, dropdown_branch=dropdown_branch, zip=zip, displaying_date=displaying_date)
 
@@ -296,7 +271,7 @@ def duty_submission():
                 else:
                     requested_blockout_do[blockout_do][str(blockout_reason)] = unavailable_dates
             flash("Your submission was successful, Please consult the Duty Manager to accept your request.", category='success')
-            return redirect(url_for('views.duty_viewing'))
+            return redirect(url_for('views.duty_home'))
     return render_template("duty_submission.html", user=current_user, name_list_do=name_list_do, unavailable_list=unavailable_list)
 
 
@@ -312,7 +287,7 @@ def duty_submission_available():
         else:
             submitted_available(DO_db, blockout_do, available_dates)
             flash("Your submission was successful, Please consult the Duty Manager to accept your request.", category='success')
-            return redirect(url_for('views.duty_viewing'))
+            return redirect(url_for('views.duty_home'))
     return render_template("duty_submission_available.html", user=current_user, name_list_do=name_list_do)
 
 
@@ -413,7 +388,8 @@ def duty_blockout_do():
                 dictionary.pop(name)
             elif accept_reject == 'Reject':
                 dictionary.pop(name)
-        return redirect(url_for('views.duty_blockout_do'))
+        flash("Acceptance / Rejection have been processed", category='success')
+        return redirect(url_for('views.duty_home'))
     return render_template("duty_blockout.html", user=current_user, dictionary=dictionary, len=len, label=label, accepted_blockout_display=accepted_blockout_display)
 
 

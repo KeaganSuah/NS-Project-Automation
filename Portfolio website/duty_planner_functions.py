@@ -186,7 +186,7 @@ def duty_plan_generator(cool_days, cool_days_s, database, sheet_forecast, sheet_
     excuse_duty.clear()
     clearing_dictionary.clear()
     extract_database(database)
-    database.purge()
+    database.truncate()
     duty_points_excel(database, sheet_points)
     block_out_month(block_out_list)
     duty_rouster_generator(10)

@@ -35,7 +35,7 @@ body {
    text-align: right;
 }
 .boxedbackground {
-  width: 90%;
+  width: 100%;
   border-radius: 10px;
   background-color: rgb(200,200,200);
   background-repeat: no-repeat;
@@ -47,8 +47,29 @@ body {
 }
 p {
     margin-bottom: 5px;
-    text-align: left;
+    text-align: justify;
       }
+aside {
+  float: left;
+  width: 30%;
+  height: 550px;
+  background: #ccc;
+  padding: 20px;
+}
+
+article {
+  float: right;
+  padding: 20px;
+  width: 70%;
+  background-image: url("https://www.solidbackgrounds.com/images/2560x1440/2560x1440-light-gray-solid-color-background.jpg");
+  height: 550px;
+}
+@media (max-width: 600px) {
+  aside, article {
+    width: 100%;
+    height: auto;
+  }
+}
 </style>
 <form method="post">
 <br>
@@ -56,14 +77,26 @@ p {
 <h1 align="center" style=font-size:35px><b>Digital Attendance Taking</b></h1>
 </div>
 <br>
-<div class="boxedbackground">
+<aside>
+<h3 align="center" style=font-size:25px><b>Instructions</b></h3>
+<div class="boxed">
+    <p> Individuals will first begin their submission of reasons for not being present during roll Call. If the individuals are present for the next day roll call, they are not required to do anything. Attendance takers will click on the roll call button to begin marking their branch attendances, superiors can also view their branch attendaces through the roll call button. The last step is for senior management to export their entire organisation attendance for the day, and it consists of all attendance for the current month</p>
+</div>
+<br>
+<h3 align="center" style=font-size:25px><b>Incoming / Outgoing Personnel</b></h3>
+<div align="center">
+<button class="btn" name="submit_button" value="add"><i class="fa fa-plus-square"></i> Add</button>
+<button class="btn" name="submit_button" value="remove"><i class="fa fa-minus-square"></i> Remove</button>
+</div>
+</aside>
+<article>
 <h2 align="center" style=font-size:25px><b>Main Operation</b></h2>
 <div class="boxed">
-<p><b>Step 1: </b>Individuals submission of attendance for the following day </p>
+<p><b>Step 1: </b>Individuals submission of reasons for <b>not being present</b> for the following day </p>
 <button class="btn" name="submit_button" value="submission"><i class="fa fa-user"></i> Submit</button>
 </div><br>
 <div class="boxed">
-<p><b>Step 2: </b>Roll Call In charge use this to submit their branch Roll call and view Parade State for {{ displaying_date }}.</p>
+<p><b>Step 2: </b>Roll Call In charge use this to submit their branch Roll call and view their branch attendance for {{ displaying_date }}.</p>
     <p> <b>Branches with incomplete Roll Call: </b>
 <br>
 {% for incomplete_branch in branches_uncompleted %}
@@ -78,26 +111,10 @@ p {
 <button class="btn" name="submit_button" value="parade state"><i class="fa fa-address-book-o"></i> Roll Call</button>
 </div><br>
 <div class="boxed">
-<p><b>Step 3: </b>Battalion HQ export Parade State for {{ displaying_date }}. </p>
+<p><b>Step 3: </b>Senior management can export the file to view the organisation attendance for {{ displaying_date }}. </p>
 <button class="btn" name="submit_button" value="export"><i class="fa fa-file-excel-o"></i> Download</button>
 </div><br>
-</div>
-<br>
-<div class="boxedbackground">
-<h3 align="center" style=font-size:25px><b>Add or Remove Individuals</b></h3>
-<div class="boxed">
-<p>To add new serviceman that have posted into the branch.</p><p>Please use their full name as state in their NRIC</p>
-<button class="btn" name="submit_button" value="add"><i class="fa fa-plus-square"></i> Add</button>
-</div><br>
-<div class="boxed">
-<p>To remove serviceman who are no longer from this branch. </p>
-<button class="btn" name="submit_button" value="remove"><i class="fa fa-minus-square"></i> Remove</button>
-</div><br>
-<div class="boxed">
-<p>To edit serviceman details, such as their name or rank.</p><p>Please use their full name as state in their NRIC</p>
-<button class="btn" name="submit_button" value="amend"><i class="fa fa-pencil-square-o"></i> Amend</button>
-</div><br>
-</div>
+</article>
 <br>
 </form>
 {% endblock %}

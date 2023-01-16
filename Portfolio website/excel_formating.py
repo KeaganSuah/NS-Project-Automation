@@ -5,7 +5,7 @@ from parade_state_function import name_in_branch_generator, sort, ranking, amend
 from copy import copy
 
 # status used for excel
-convert_status = {"Present": 'P', "Late": 'P', "HLS": 'P', "DUTY": 'P', "Work From Home": 'WFH',
+convert_status = {"Present": 'P', "Work From Home": 'WFH',
                   "Outside Stationed": 'OS',
                   "Attached Out": 'ATT',
                   "On Course": 'C', "Day Off": 'OFF', "Local Leave": 'LL',
@@ -196,16 +196,17 @@ def tracking_delete(name, depot):
         if str(depot).lower() == str(string).lower():
             for number in range(2, (value_counter(type_xl_ps[count])) + 1):
                 name_in_file = type_xl_ps[count].cell(row=number * 2, column=3).value
-                if str(name_in_file).lower() == str(name).lower():
-                    for column in range(1, 4):
-                        type_xl_ps[count].unmerge_cells(start_row=(value_counter(type_xl_ps[count]) * 2),
-                                                        start_column=column,
-                                                        end_row=((value_counter(type_xl_ps[count]) * 2) + 1),
-                                                        end_column=column)
-                    type_xl_ps[count].delete_rows(idx=number * 2, amount=2)
+                if str(name_in_file) is not None:
+                    if str(name_in_file).lower() == str(name).lower():
+                        for column in range(1, 4):
+                            type_xl_ps[count].unmerge_cells(start_row=(value_counter(type_xl_ps[count]) * 2),
+                                                            start_column=column,
+                                                            end_row=((value_counter(type_xl_ps[count]) * 2) + 1),
+                                                            end_column=column)
+                        type_xl_ps[count].delete_rows(idx=number * 2, amount=2)
         else:
+            count += 1
             continue
-        count += 1
 
 
 unsorted_ranks = dict()

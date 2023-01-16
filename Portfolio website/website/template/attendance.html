@@ -112,16 +112,20 @@ body {
     <Select id="am_{{ branch_string }}" name="am_{{ branch_string }}" class="form-control">
      <option>* Required *</option>
         {%for state in status%}
+        {%if state != 'Present'%}
    <option value='{{ state }}'>{{ state }}</option>
+        {%endif%}
         {%endfor%}
 </Select>
     <br>
 <!--input for PM Status-->
     <label for="pm_{{ branch_string }}">Select your PM Status </label>
     <Select id="pm_{{ branch_string }}" name="pm_{{ branch_string }}" class="form-control">
-     <option>Choose your option, if necessary</option>
+     <option>* Required *</option>
         {%for state in status%}
+        {%if state != 'Present'%}
    <option value='{{ state }}'>{{ state }}</option>
+        {%endif%}
         {%endfor%}
 </Select>
 </div>
