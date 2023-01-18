@@ -110,7 +110,7 @@ article {
 <button class="btn" name="duty_main" value="generate" onclick="clicked(event)"><i class="fa fa-cog"></i> Generate</button>
 </div><br>
 <div class="boxed">
-<p><b>Step 5: </b>Once generated, superiors download the duty roster and forward it to the duty personnel</p>
+<p><b>Step 5: </b>Once generated, superiors download the duty roster and forward it to the duty personnel. Duty Personnel are also able to see their average points to compare among themselves.</p>
 <button class="btn" name="duty_main" value="download"><i class="fa fa-download"></i> Download</button>
 </div><br>
 <div class="boxed">
@@ -121,4 +121,14 @@ article {
 <br>
 <br>
 </form>
+
+<script>
+function clicked(e)
+{
+    if(!confirm('Please note that once roster is generated, action is permanent and will proceed to the next month.')) {
+        e.preventDefault();
+    }
+}
+</script>
+
 {% endblock %}

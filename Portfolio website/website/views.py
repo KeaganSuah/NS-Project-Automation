@@ -90,6 +90,7 @@ def index():
         # transfer parade state data into Excel file, and export it out
         elif selected_request == 'export':
             submit()
+            name_in_branch_generator('rank')
             value = 0
             for sum_xl in type_xl_summary:
                 clear_excel_range(sum_xl, 6, 22, 3, 20)

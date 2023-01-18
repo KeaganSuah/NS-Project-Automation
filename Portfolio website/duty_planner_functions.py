@@ -186,7 +186,7 @@ def duty_plan_generator(cool_days, cool_days_s, database, sheet_forecast, sheet_
     excuse_duty.clear()
     clearing_dictionary.clear()
     extract_database(database)
-    database.purge()
+    database.truncate()
     duty_points_excel(database, sheet_points)
     block_out_month(block_out_list)
     duty_rouster_generator(10)
@@ -394,12 +394,13 @@ def duty_plan_generator(cool_days, cool_days_s, database, sheet_forecast, sheet_
                         if weekend_duty['cooldown'] > 0:
                             continue
                         else:
-                            normal_duty[duties['duty'][0]]['points'] -= 1.5
-                            duties['duty'].append(excuse_name)
-                            weekend_duty['cooldown'] = 10
-                            weekend_duty['points'] += 1.5
-                            excuse_duty.pop(excuse_name)
-                            excuse_duty[excuse_name] = weekend_duty
+                            if weekend_duty['points'] < get_mean(normal_duty):
+                                normal_duty[duties['duty'][0]]['points'] -= 1.5
+                                duties['duty'].append(excuse_name)
+                                weekend_duty['cooldown'] = 10
+                                weekend_duty['points'] += 1.5
+                                excuse_duty.pop(excuse_name)
+                                excuse_duty[excuse_name] = weekend_duty
             else:
                 continue
     for name, details in normal_duty.copy().items():
@@ -431,6 +432,16 @@ def duty_plan_generator(cool_days, cool_days_s, database, sheet_forecast, sheet_
 
 empty_do = [[], [], [], []]
 empty_doo = [[], [], [], []]
+
+
+def get_mean(dictionary):
+    mean = 0
+    peoples = 0
+    for personnel, attributes in dictionary.copy().items():
+        mean += attributes['points']
+        peoples += 1
+    mean /= peoples
+    return mean
 
 
 def check_if_empty(empty_list, position):

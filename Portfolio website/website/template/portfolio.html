@@ -16,7 +16,7 @@ body {
 }
 p {
     margin-bottom: 5px;
-    text-align: justify;
+    text-align: left;
     font-family: Times, Times New Roman, serif;
     font-size: 1.2em;
       }
@@ -60,13 +60,13 @@ html,body,h1,h2,h3,h4,h6 {font-family:Georgia, serif}
    text-align: center;
 }
 .aboutbackground {
-  width: 70%;
+  width: 90%;
   background-color: #f1f1f1;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   margin: auto;
-   text-align: center;
+   text-align: justify;
    float: center;
 }
 .btn {
@@ -128,7 +128,7 @@ article {
   background-image: url("https://www.solidbackgrounds.com/images/2560x1440/2560x1440-light-gray-solid-color-background.jpg");
   height: 1600px;
 }
-@media (max-width: 600px) {
+@media (max-width: 1100px) {
   aside, article {
     width: 100%;
     height: auto;
@@ -177,13 +177,15 @@ img {
       <br>
       <br>
 <br>
+<img src="{{url_for('static', filename='face.JPG')}}" align="center" width="180" height="220"/>
+<br>
+<br>
 <div class="aboutbackground">
-<img src="{{url_for('static', filename='face.jpg')}}" align="right" width="180" height="220"/>
 <span class="intro">I am serving my national service in the Singapore Armed Forces, helping to digitalise and innovate ideas that help ease servicemen lifes and achieve their objectives. I have an interest in Data Analytics and Web Development, and have used my interest to creates innovative solutions. In addition to exploring the area of Information Technology that I am immensely passionate about, I aspire to learn more about its related fields, such as Internet of Things and Machine Learning. I am a keen learner and seek opportunities to develop my skills further.</span>
+</div>
 <br>
 <br>
 <button class="cvbtn" name="portfolio_button" value="resume"><i class="fa fa-download"></i> Download CV</button>
-  </div>
 </div>
   </div>
 </div>
@@ -280,7 +282,7 @@ img {
 
 <div class="boxedbackground">
 <button id="studyexp" class="btn btn-primary showFire" onclick="qualitiesFunction('studydiv', 'workdiv', 'certdiv')" type="button">
-    <i class="fa fa-graduation-cap fa-fw w3-margin-right w3-text-teal"></i>Education
+    <i class="fa fa-graduation-cap fa-fw w3-margin-right w3-text-teal"></i>Education<span class="fa fa-caret-down fa-pull-right"></span>
 </button><div id="studydiv" style="display:none">
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Diploma in Accounting & Finance / TEMASEK POLYTHECNIC</b></h5>
@@ -301,7 +303,7 @@ Analytics, Auditing, and Information System & Financial Analytics. </p>
 <br>
 <div class="boxedbackground">
 <button id="workexp" class="btn btn-primary showFire" onclick="qualitiesFunction('workdiv', 'studydiv', 'certdiv')" type="button">
-    <i class="fa fa-suitcase fa-fw w3-margin-right w3-text-teal"></i>Work Experience
+    <i class="fa fa-suitcase fa-fw w3-margin-right w3-text-teal"></i>Work Experience<span class="fa fa-caret-down fa-pull-right"></span>
 </button><div id="workdiv">
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Frontend & Backend Developer / Singapore Armed Forces</b></h5>
@@ -320,7 +322,7 @@ Analytics, Auditing, and Information System & Financial Analytics. </p>
 <br>
 <div class="boxedbackground">
 <button id="certexp" class="btn btn-primary showFire" onclick="qualitiesFunction('certdiv', 'workdiv', 'studydiv')" type="button">
-    <i class="fa fa-trophy fa-fw w3-margin-right w3-text-teal"></i>Certificates & Achievements
+    <i class="fa fa-trophy fa-fw w3-margin-right w3-text-teal"></i>Certificates & Achievements<span class="fa fa-caret-down fa-pull-right"></span>
 </button><div id="certdiv" style="display:none">
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Assistant Class Representative / TEMASEK POLYTHECNIC</b></h5>

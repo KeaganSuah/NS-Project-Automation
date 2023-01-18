@@ -114,7 +114,6 @@ def save_file():
 
 # transfer data from the website into the Excel file, focus on summary
 def transfer_summary_excel(dictionary, branch, sheet):
-    name_in_branch_generator('rank')
     for row in range(2, 21):
         for column in range(3, 22):
             status = sheet.cell(row=row, column=2).value
