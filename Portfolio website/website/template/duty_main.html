@@ -50,19 +50,21 @@ p {
     text-align: justify;
       }
 aside {
+border-radius: 10px;
   float: left;
   width: 30%;
-  height: 750px;
-  background: #ccc;
+  height: 870px;
+  background: #B8B8B8;
   padding: 20px;
 }
 
 article {
+border-radius: 10px;
   float: right;
   padding: 20px;
   width: 70%;
   background-image: url("https://www.solidbackgrounds.com/images/2560x1440/2560x1440-light-gray-solid-color-background.jpg");
-  height: 750px;
+  height: 870px;
 }
 @media (max-width: 600px) {
   aside, article {
@@ -80,7 +82,7 @@ article {
 <aside>
 <h3 align="center" style=font-size:25px><b>Instructions</b></h3>
 <div class="boxed">
-    <p>In the military, every serviceman have to perform their operation duty. This project helps to organise and plan out the servicemans duties and ensure it is fair based on the algorithm. The serviceman will first begain their submission of their preferred and unavailable dates. On the given cut of date, superiors will use step 3 to view all of the submissions, and choose wether to accept or reject. Once all the request have been accepted or rejected, superiors will generate out the duty roster by simplying clicking the button. The system follows the algorithm in order to ensure an unbiased and fair duty roster. Superiors can hen download the duty roster and forward to the rest. In the scenerio where a duty personnel would like to make adjustments, they can let their superiors know and they can do the necessary amendments using step 6.</p>
+    <H5 align="left"><b>Purpose</b></H5><p>In the military, every serviceman have to perform their operation duty. This project helps to organise and plan out the servicemans duties and ensure it is fair based on the algorithm.</p><h5 align="left"><b>Individual Process</b></h5><p>The serviceman will first begin their submission of their preferred and unavailable dates.</p><h5 align="left"><b>Superior Process</b></h5><p>On the given cut of date, superiors will use step 3 to view all submissions, and choose whether to accept or reject. Once all the request have been accepted or rejected, superiors will generate out the duty roster by clicking the button. The system follows the algorithm in order to ensure an unbiased and fair duty roster. Superiors can then download the duty roster and forward to the rest. In the scenario where a duty personnel would like to make adjustments, they can let their superiors know, and they can do the necessary amendments using step 6.</p>
 </div>
 <br>
 <h3 align="center" style=font-size:25px><b>Incoming / Outgoing Personnel</b></h3>
@@ -90,7 +92,9 @@ article {
 </div>
 </aside>
 <article>
-<h2 align="center" style=font-size:25px>Main Operation</h2>
+<h2 align="center" style=font-size:25px><b>Main Operation</b></h2>
+<hr color="black">
+<h5 align="left"><b>Individual Operation</b></h5>
 <div class="boxed">
 <p><b>Step 1: </b>Duty Personnel submit their preferred duty date</p>
 <button class="btn" name="duty_main" value="available"><i class="fa fa-check"></i> Prefer Date</button>
@@ -100,7 +104,8 @@ article {
 <p><b>Step 2: </b>Duty Personnel submit their unavailable dates</p>
 <button class="btn" name="duty_main" value="unavailable"><i class="fa fa-times"></i> Block-off</button>
 </div>
-<br>
+<br><hr color="black">
+<h5 align="left"><b>Superior Operations</b></h5>
 <div class="boxed">
 <p><b>Step 3: </b>Superiors Accept or Reject the individuals unavailable dates</p>
 <button class="btn" name="duty_main" value="submission"><i class="fa fa-list-alt"></i> proceed</button>
