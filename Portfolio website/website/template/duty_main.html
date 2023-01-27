@@ -1,0 +1,139 @@
+{% extends "base.html" %} {% block title %}Duty Planner Home{% endblock %}
+
+{% block content %}
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.25;
+  background-image: url({{ url_for('static', filename='9amb.png') }});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  width: 125px;
+  padding: 6px 16px;
+  font-size: 15px;
+  cursor: pointer;
+}
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+.boxed {
+  border-radius: 10px;
+  background-color: white;
+  width: 90%;
+  border: 2px solid grey;
+  padding: 10px;
+  margin: auto;
+   text-align: right;
+}
+.boxedbackground {
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgb(200,200,200);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 10px;
+  margin: auto;
+   text-align: right;
+}
+p {
+    margin-bottom: 5px;
+    text-align: justify;
+      }
+aside {
+border-radius: 10px;
+  float: left;
+  width: 30%;
+  height: 870px;
+  background: #B8B8B8;
+  padding: 20px;
+}
+
+article {
+border-radius: 10px;
+  float: right;
+  padding: 20px;
+  width: 70%;
+  background-image: url("https://www.solidbackgrounds.com/images/2560x1440/2560x1440-light-gray-solid-color-background.jpg");
+  height: 870px;
+}
+@media (max-width: 600px) {
+  aside, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+<form method="post">
+<br>
+<div class="boxedbackground">
+<h1 align="center" style=font-size:35px><b>Automated Duty Roster</b></h1>
+</div>
+<br>
+<aside>
+<h3 align="center" style=font-size:25px><b>Instructions</b></h3>
+<div class="boxed">
+    <H5 align="left"><b>Purpose</b></H5><p>In the military, every serviceman have to perform their operation duty. This project helps to organise and plan out the servicemans duties and ensure it is fair based on the algorithm.</p><h5 align="left"><b>Individual Process</b></h5><p>The serviceman will first begin their submission of their preferred and unavailable dates.</p><h5 align="left"><b>Superior Process</b></h5><p>On the given cut of date, superiors will use step 3 to view all submissions, and choose whether to accept or reject. Once all the request have been accepted or rejected, superiors will generate out the duty roster by clicking the button. The system follows the algorithm in order to ensure an unbiased and fair duty roster. Superiors can then download the duty roster and forward to the rest. In the scenario where a duty personnel would like to make adjustments, they can let their superiors know, and they can do the necessary amendments using step 6.</p>
+</div>
+<br>
+<h3 align="center" style=font-size:25px><b>Incoming / Outgoing Personnel</b></h3>
+<div align="center">
+<button class="btn" name="duty_main" value="add"><i class="fa fa-plus-square"></i> Add</button>
+<button class="btn" name="duty_main" value="remove"><i class="fa fa-minus-square"></i> Remove</button>
+</div>
+</aside>
+<article>
+<h2 align="center" style=font-size:25px><b>Main Operation</b></h2>
+<hr color="black">
+<h5 align="left"><b>Individual Operation</b></h5>
+<div class="boxed">
+<p><b>Step 1: </b>Duty Personnel submit their preferred duty date</p>
+<button class="btn" name="duty_main" value="available"><i class="fa fa-check"></i> Prefer Date</button>
+</div>
+<br>
+<div class="boxed">
+<p><b>Step 2: </b>Duty Personnel submit their unavailable dates</p>
+<button class="btn" name="duty_main" value="unavailable"><i class="fa fa-times"></i> Block-off</button>
+</div>
+<br><hr color="black">
+<h5 align="left"><b>Superior Operations</b></h5>
+<div class="boxed">
+<p><b>Step 3: </b>Superiors Accept or Reject the individuals unavailable dates</p>
+<button class="btn" name="duty_main" value="submission"><i class="fa fa-list-alt"></i> proceed</button>
+</div><br>
+<div class="boxed">
+<p><b>Step 4: </b>Superiors press this to Generate the Duty Roster.</p><p> Superiors have to accepted or rejected all submission before generating the roster. </p>
+<button class="btn" name="duty_main" value="generate" onclick="clicked(event)"><i class="fa fa-cog"></i> Generate</button>
+</div><br>
+<div class="boxed">
+<p><b>Step 5: </b>Once generated, superiors download the duty roster and forward it to the duty personnel. Duty Personnel are also able to see their average points to compare among themselves.</p>
+<button class="btn" name="duty_main" value="download"><i class="fa fa-download"></i> Download</button>
+</div><br>
+<div class="boxed">
+<p><b>Step 6: </b>Any amendments made between duty personnel, for example exchange of duties, can be done by superiors</p>
+<button class="btn" name="duty_main" value="amendment_forecast"><i class="fa fa-exchange"></i> Update</button>
+</div>
+</article>
+<br>
+<br>
+</form>
+
+<script>
+function clicked(e)
+{
+    if(!confirm('Please note that once roster is generated, action is permanent and will proceed to the next month.')) {
+        e.preventDefault();
+    }
+}
+</script>
+
+{% endblock %}
