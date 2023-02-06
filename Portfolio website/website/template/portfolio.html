@@ -138,6 +138,13 @@ img {
   border: 2px solid #555;
   border-radius: 10px;
 }
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
 </style>
 </head>
 <body>
@@ -203,10 +210,10 @@ img {
       <br>
       <br>
 <div class="boxedbackground">
-<button id="techskills" class="btn btn-primary showFire" onclick="myFunction('techdiv')" type="button">
-    <i class="fa fa-puzzle-piece fa-fw w3-margin-right w3-text-teal"></i>Technical Skills<span class="fa fa-minus fa-pull-right"></span>
+<button id="techskills" class="btn btn-primary showFire collapsible" type="button">
+    <i class="fa fa-puzzle-piece fa-fw w3-margin-right w3-text-teal"></i>Technical Skills<span class="fa fa-plus fa-pull-right"></span>
 </button>
-<div id="techdiv">
+<div id="techdiv" class="content">
 <p>Python & Flask</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
@@ -240,9 +247,9 @@ img {
 </div>
 <br>
 <div class="boxedbackground">
-<button id="softskills" class="btn btn-primary showFire" onclick="myFunction('softdiv')" type="button">
+<button id="softskills" class="btn btn-primary showFire collapsible"  type="button">
     <i class="fa fa-users fa-fw w3-margin-right w3-text-teal"></i>Soft Skills<span class="fa fa-plus fa-pull-right"></span>
-</button><div id="softdiv" style="display:none">
+</button><div id="softdiv" class="content">
 <p>Critical Thinking</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">80%</div>
@@ -464,6 +471,23 @@ function qualitiesFunction(main, var1, var2) {
     $el.find('span').toggleClass('fa fa-minus fa fa-plus');
   });
 });
+</script>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
 </script>
 
 </form>
