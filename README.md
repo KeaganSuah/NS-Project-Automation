@@ -29,7 +29,7 @@ To develop this project, I acquired proficiency in various programming languages
 - For a detailed report on the project, please refer to the [PDF Report](Report.pdf).
 
 ## Testimonial
-- Testimonial: [Testimonial PDF](NS-testimonial.pdf)
+- Testimonial: [Testimonial PDF](NS-testimonial.png)
 
 ## Usage
 1. Clone the repository: git clone https://github.com/KeaganSuah/NS-Project-Automation.git
