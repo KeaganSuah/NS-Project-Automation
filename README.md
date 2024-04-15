@@ -1,4 +1,4 @@
-# My National Service Project Automation on Duty Planning & Roll Call
+#🫡My National Service Project Automation on Duty Planning & Roll Call
 
 ## Introduction
 This project aims to address inefficiencies and manpower wastage in daily military procedures by digitalizing and automating key tasks. The two main automations implemented are the Automated Attendance Taking system and the Automated Duty Roster system. These systems streamline processes that were previously manual, resulting in improved accuracy, efficiency, and user satisfaction.
