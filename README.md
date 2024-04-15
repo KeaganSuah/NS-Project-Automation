@@ -26,13 +26,13 @@ To develop this project, I acquired proficiency in various programming languages
 - Integrated Openpyxl framework to transfer data between the website and Excel spreadsheets, ensuring compatibility with military requirements.
 
 ## Report
-- For a detailed report on the project, please refer to the [PDF Report](link-to-pdf-report-file.pdf).
+- For a detailed report on the project, please refer to the [PDF Report](Report.pdf).
 
 ## Testimonial
-- Testimonial: [Testimonial PDF](link-to-testimonial-pdf-file.pdf)
+- Testimonial: [Testimonial PDF](NS Testimonial.pdf)
 
 ## Usage
-1. Clone the repository: git clone https://github.com/yourusername/military-automation.git
+1. Clone the repository: git clone https://github.com/KeaganSuah/NS-Project-Automation.git
 2. Install dependencies:pip install -r requirements.txt
 3. Configure the application settings in `config.py`.
 4. Initialize the database:
@@ -45,9 +45,12 @@ To develop this project, I acquired proficiency in various programming languages
 The Military Automation System significantly improves the efficiency and accuracy of daily procedures in the military. By leveraging automation and digitalization, this project enhances user experience and optimizes resource allocation. Future enhancements include features to allow workshop-specific parade state downloads and servicemen's choice in duty scheduling.
 
 ## Technologies
-- Flask: [Flask Framework](https://flask.palletsprojects.com/)
-- AWS: [Amazon Web Services](https://aws.amazon.com/)
-- Openpyxl: [Openpyxl Framework](https://openpyxl.readthedocs.io/en/stable/)
+- HTML/CSS
+- JavaScript
+- Python
+- Flask
+- AWS
+- Openpyxl
 
 ## Contact
 For inquiries or feedback, please contact the project maintainer at [email@example.com](mailto:email@example.com).
