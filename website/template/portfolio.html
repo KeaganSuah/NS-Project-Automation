@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>KeaganS portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #f1f1f1;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+p {
+    margin-bottom: 5px;
+    text-align: left;
+    font-family: Times, Times New Roman, serif;
+    font-size: 1.2em;
+      }
+.intro{
+   margin-bottom: 5px;
+    text-align: left;
+    font-family: Times, Times New Roman, serif;
+    font-size: 1.2em;
+        }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+html,body,h1,h2,h3,h4,h6 {font-family:Georgia, serif}
+.mySlides {display:none}
+.w3-tag, .fa {cursor:pointer}
+.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+.boxedbackground {
+  width: 100%;
+  border-radius: 10px;
+  background-image: url('https://wallpaperaccess.com/full/1746862.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  padding: 10px;
+  margin: auto;
+   text-align: left;
+}
+.portfoliobackground {
+  width: 90%;
+  border-radius: 10px;
+  background-image: url('https://wallpaperaccess.com/full/1746862.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  padding: 10px;
+  margin: auto;
+   text-align: center;
+}
+.aboutbackground {
+  width: 90%;
+  background-color: #f1f1f1;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: auto;
+   text-align: justify;
+   float: center;
+}
+.btn {
+  background-image: url('https://wallpaperaccess.com/full/1746862.png');
+  border: none;
+  color: black;
+  width: 100%;
+  padding: 6px 16px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: left;
+}
+.cvbtn {
+  border-radius: 10px;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqjJx9th_L2u91uqzqjsWndrXjSsFQthhq722NVAmVW2ChmceXDgmb6Wd3pssRd0E4WRY&usqp=CAU');
+  border: none;
+  color: white;
+  width: 150px;
+  height: 50px;
+  padding: 6px 16px;
+  font-size: 15px;
+  cursor: pointer;
+}
+/* Darker background on mouse-over */
+.cvbtn:hover {
+  background-image: url('https://garden.spoonflower.com/c/7139432/p/f/l/s6f7Z6loE7FY34kgNRch9oopQ0MuguwltygHTTIRG7-lgY-2OVDImZXa/solid%20light%20sage%20green-%20farm%20life%20coordinate.jpg');
+}
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  float: right;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  float: right;
+}
+
+aside {
+  float: left;
+  width: 30%;
+  height: 1600px;
+  background: #B8B8B8;
+  padding: 20px;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background: #D8D8D8;
+  height: 1600px;
+}
+@media (max-width: 1100px) {
+  aside, article {
+    width: 100%;
+    height: auto;
+  }
+}
+img {
+  border: 2px solid #555;
+  border-radius: 10px;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+</style>
+</head>
+<body>
+<form method="post">
+  <div class="w3-content" style="max-width:1100px ;margin-top:80px;margin-bottom:80px">
+    <!-- Grid -->
+    <div class="w3-row-padding" id="portfolio">
+      <div class="w3-center w3-padding-64">
+        <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16"><b>Army Projects Demo</b></span>
+      </div>
+  
+      <div class="w3-half w3-margin-bottom">
+        <div class="portfoliobackground">
+            <h3 class="w3-opacity">Digital Attendance Taking</h3>
+            <img src="{{url_for('static', filename='attendance.jpg')}}" align="middle" width="100%" height="200"/>
+            <p>Digitalise the Army Battalion Process of roll call and attendance taking.</p>
+            <button class="cvbtn" name="portfolio_button" value="attendance">View Demo</button>
+        </div>
+      </div>
+  
+      <div class="w3-half w3-margin-bottom">
+        <div class="portfoliobackground">
+            <h3 class="w3-opacity">Automated Duty Roster</h3>
+            <img src="{{url_for('static', filename='roster.png')}}" align="middle" width="100%" height="200"/>
+            <p>Digitalise and automate the duty roster planning process and management.</p>
+            <button class="cvbtn" name="portfolio_button" value="roster">View Demo</button>
+          </div>
+      </div>
+      <br>
+      <br>
+  </div>
+  </div>
+
+</form>
+
+
+<script>
+// Slideshow
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demodots");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>
+
+<script>
+function myFunction(div) {
+  var x = document.getElementById(div);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function qualitiesFunction(main, var1, var2) {
+  var x = document.getElementById(main);
+  var y = document.getElementById(var1);
+  var z = document.getElementById(var2);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.display = "none";
+    z.style.display = "none";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    jQuery(function($) {
+  $('#techskills').on('click', function() {
+    var $el = $(this),
+      textNode = this.lastChild;
+    $el.find('span').toggleClass('fa fa-minus fa fa-plus');
+  });
+});
+</script>
+
+<script>
+    jQuery(function($) {
+  $('#softskills').on('click', function() {
+    var $el = $(this),
+      textNode = this.lastChild;
+    $el.find('span').toggleClass('fa fa-minus fa fa-plus');
+  });
+});
+</script>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+</form>
+</body>
+</html>
