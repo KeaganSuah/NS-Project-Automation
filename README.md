@@ -13,10 +13,13 @@ To develop this project, I acquired proficiency in various programming languages
 - Role-based access control ensures that users can only access information relevant to their responsibilities.
 
 ### Automated Attendance Taking
+- The Roll Call Web is a centralised platform where users can easily upload their attendance, significantly reducing the time required for administrative tasks and data uploads.
 - Servicemen can submit their attendance status through the website, eliminating the need for manual submission via alternative means.
 - Commanders can oversee attendance and finalise the roll call list through dedicated pages, improving transparency and efficiency.
 
 ### Automated Duty Roster
+- The automated duty planner program was developed to streamline duty planning processes, reducing planning time from days to seconds.
+- Analysis the duty planning process, I devised an algorithm that efficiently schedules duties, ensuring optimal efficiency and accuracy.
 - Servicemen can submit block-off dates and reasons for inability to perform duty, facilitating duty planning.
 - The Duty Roster System automates duty planning based on servicemen attributes, ensuring fairness and impartiality.
 - Duty managers can make adjustments to the duty roster as needed, with changes reflected in real-time.
