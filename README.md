@@ -53,8 +53,8 @@ The Military Automation System significantly improves the efficiency and accurac
 - JavaScript
 - Python
 - Flask
-- AWS
-- Openpyxl
+- Amazon Web Service(AWS)
+- AWS Route 53
 
 ## Contact
 For inquiries or feedback, please contact me at suahkeagan@gmail.com
