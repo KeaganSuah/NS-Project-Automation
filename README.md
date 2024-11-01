@@ -48,21 +48,22 @@ To develop this project, I acquired proficiency in various programming languages
 ## Conclusion
 The Military Automation System significantly improves the efficiency and accuracy of daily procedures in the military. By leveraging automation and digitalisation, this project enhances user experience and optimises resource allocation. Future enhancements include features to allow workshop-specific parade state downloads and servicemen's choice in duty scheduling.
 
-## Technologies and Skills Used
+## Technologies
 - HTML/CSS
 - JavaScript
 - Python
 - Flask Framework (with Flask-SQLAlchemy, Flask-Login)
 - SQL (SQLite)
-- Web Development (Frontend and Backend)
 - Cloud Computing (AWS, AWS Route 53)
 - Data Management and Integration (Openpyxl for Excel compatibility)
+
+## Skills
+- Web Development (Frontend and Backend)
 - Responsive Web Design for Mobile and Desktop
 - User Authentication and Role-Based Access Control
 - Automation Algorithms for Task Efficiency
 - Problem Analysis and Algorithm Design
 - Agile Development Practices
-
 
 ## Contact
 For inquiries or feedback, please contact me at suahkeagan@gmail.com
