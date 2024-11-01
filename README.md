@@ -54,7 +54,7 @@ The Military Automation System significantly improves the efficiency and accurac
 - Python
 - Flask Framework (with Flask-SQLAlchemy, Flask-Login)
 - SQL (SQLite)
-- Cloud Computing (AWS, AWS Route 53)
+- Amazon Web Services (Cloud Computing)
 - Data Management and Integration (Openpyxl for Excel compatibility)
 
 ## Skills
