@@ -55,15 +55,15 @@ The Military Automation System significantly improves the efficiency and accurac
 - Flask Framework (with Flask-SQLAlchemy, Flask-Login)
 - SQL (SQLite)
 - Amazon Web Services (Cloud Computing)
-- Data Management and Integration (Openpyxl for Excel compatibility)
+- Data Management (Openpyxl for Excel compatibility)
 
 ## Skills
 - Web Development (Frontend and Backend)
-- Responsive Web Design for Mobile and Desktop
-- User Authentication and Role-Based Access Control
-- Automation Algorithms for Task Efficiency
-- Problem Analysis and Algorithm Design
-- Agile Development Practices
+- Responsive Web Design
+- User Authentication
+- Role-Based Access Control
+- Automation Algorithms
+- Agile Development
 
 ## Contact
 For inquiries or feedback, please contact me at suahkeagan@gmail.com
